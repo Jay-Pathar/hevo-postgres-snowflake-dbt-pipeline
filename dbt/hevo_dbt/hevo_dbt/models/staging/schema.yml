@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: hevo_raw
+    database: PC_HEVODATA_DB
+    schema: PUBLIC
+    tables:
+      - name: _POSTGRES_RAW_CUSTOMERS
+      - name: _POSTGRES_RAW_ORDERS
+      - name: _POSTGRES_RAW_PAYMENTS

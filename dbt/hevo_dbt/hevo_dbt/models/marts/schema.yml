@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: customers
+    description: "Customer dimension built using Hevo-ingested Snowflake data"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for a customer"
+        tests:
+          - not_null
+          - unique
+
+  
+  - name: stg_customers
+    columns:
+      - name: id
+        tests:
+          - not_null
+          - unique
+  
+  - name: stg_orders
+    columns:
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+  
+  - name: stg_payments
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+      - name: payment_method
+        tests:
+          - accepted_values:
+              values: ['credit_card', 'coupon', 'bank_transfer', 'gift_card']
